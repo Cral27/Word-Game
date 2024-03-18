@@ -1,0 +1,37 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background: linear-gradient(89.9deg, rgb(208, 246, 255) 0.1%, rgb(255, 237, 237) 47.9%, rgb(255, 255, 231) 100.2%);
+}
+
+main
+{
+    width: 25%;
+    outline: 1px solid black;
+    margin: 3% auto;
+    padding: 3%;
+    line-height: 45px;
+    font-size: 1.2rem;
+    border-radius: 2%;
+    background-color: lightyellow;
+
+
+    input
+    {
+        font-size: 1.2rem;
+    }
+
+    #submit
+    {
+        width: 120px;
+        height: 30px;
+        color: white;
+        background-color: green;
+        box-shadow: 3px 3px black;
+    }
+}

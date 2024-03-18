@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            $(document).ready(function(){
+                const socket = io();
+                const input = document.getElementById('textbox');
+                const form = document.getElementById('form');
+                let text;
+                let userName = '<%= name %>';
+
+                console.log(userName);
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if(input.value){
+                        socket.emit('beta', {msg: input.value, name: userName});
+                        input.value = '';
+                    }
+                })
+
+                let counter = 0;
+                socket.on('beta', (data) => {
+                    //create a dom to put it inside the div
+                    const div = document.getElementById('container');
+                    const list = document.createElement('li');
+                    list.textContent = data.name+': '+data.msg;
+                    div.appendChild(list);
+
+                    let actualWord = '<%= actualWord %>';
+                    
+                    if(data.msg === actualWord && counter === 0)
+                    {
+                        let finish = document.createElement('li');
+                        finish.textContent = 'Congrats '+data.name+' has guessed the word!!!';
+                        finish.setAttribute('id', 'winner');
+                        div.appendChild(finish);
+                        counter = 1;
+                    }
+                })
+
+            });
+        </script>
+    </head>
+    <body>
+        <main id="chatroomContainer">
+            <h1><%= puzzle.join(' ') %></h1>
+
+            <div id="container"></div>
+            <div>
+                <form action="#" id="form">
+                    <input type="text" id="textbox"><!--
+                 --><input type="submit" id="submit" value="Submit">
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

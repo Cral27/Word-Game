@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <h2>The page at http://localhost:1337 says:</h2>
+            <h2>Enter your name:</h2>
+            <form action="/chatroom" id="form" method="post">
+                <input type="text" id="name" name="name">
+                <input type="submit" value="Submit" id="submit">
+            </form>
+        </main>
+    </body>
+</html>
